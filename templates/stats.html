@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Stats
+{% endblock %}
+
+{% block main %}
+<div class="section">
+
+    <h2>My Stats</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>One Guess</th>
+                <th>Two Guesses</th>
+                <th>Three Guesses</th>
+                <th>Four Guesses</th>
+                <th>Five Guesses</th>
+                <th>Six Guesses</th>
+                <th>Average Guesses</th>
+                <th>Games Played</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Win %</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ stats.one_guess }}</td>
+                <td>{{ stats.two_guess }}</td>
+                <td>{{ stats.three_guess }}</td>
+                <td>{{ stats.four_guess }}</td>
+                <td>{{ stats.five_guess }}</td>
+                <td>{{ stats.six_guess }}</td>
+                <td>{{ stats.average_guesses }}</td>
+                <td>{{ stats.games }}</td>
+                <td>{{ stats.wins }}</td>
+                <td>{{ stats.losses }}</td>
+                <td>{{ (stats.win_percentage) | perc}}</td>
+            </tr>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

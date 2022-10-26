@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Play
+{% endblock %}
+
+{% block main %}
+    <div class="game-container">
+        <!--<div class="message-container"></div>-->
+        <div class="tile-container">
+            <div id="guessRow0">
+                <div id="guessLetter00" class="tile" style="background-color:{{ all_outputs[0][0] }}">{{ outputString[0][0] }}</div>
+                <div id="guessLetter01" class="tile" style="background-color:{{ all_outputs[0][1] }}">{{ outputString[0][1] }}</div>
+                <div id="guessLetter02" class="tile" style="background-color:{{ all_outputs[0][2] }}">{{ outputString[0][2] }}</div>
+                <div id="guessLetter03" class="tile" style="background-color:{{ all_outputs[0][3] }}">{{ outputString[0][3] }}</div>
+                <div id="guessLetter04" class="tile" style="background-color:{{ all_outputs[0][4] }}">{{ outputString[0][4] }}</div>
+            </div>
+            <div id="guessRow1">
+                <div id="guessLetter10" class="tile" style="background-color:{{ all_outputs[1][0] }}">{{ outputString[1][0] }}</div>
+                <div id="guessLetter11" class="tile" style="background-color:{{ all_outputs[1][1] }}">{{ outputString[1][1] }}</div>
+                <div id="guessLetter12" class="tile" style="background-color:{{ all_outputs[1][2] }}">{{ outputString[1][2] }}</div>
+                <div id="guessLetter13" class="tile" style="background-color:{{ all_outputs[1][3] }}">{{ outputString[1][3] }}</div>
+                <div id="guessLetter14" class="tile" style="background-color:{{ all_outputs[1][4] }}">{{ outputString[1][4] }}</div>
+            </div>
+            <div id="guessRow2">
+                <div id="guessLetter20" class="tile" style="background-color:{{ all_outputs[2][0] }}">{{ outputString[2][0] }}</div>
+                <div id="guessLetter21" class="tile" style="background-color:{{ all_outputs[2][1] }}">{{ outputString[2][1] }}</div>
+                <div id="guessLetter22" class="tile" style="background-color:{{ all_outputs[2][2] }}">{{ outputString[2][2] }}</div>
+                <div id="guessLetter23" class="tile" style="background-color:{{ all_outputs[2][3] }}">{{ outputString[2][3] }}</div>
+                <div id="guessLetter24" class="tile" style="background-color:{{ all_outputs[2][4] }}">{{ outputString[2][4] }}</div>
+            </div>
+            <div id="guessRow3">
+                <div id="guessLetter30" class="tile" style="background-color:{{ all_outputs[3][0] }}">{{ outputString[3][0] }}</div>
+                <div id="guessLetter31" class="tile" style="background-color:{{ all_outputs[3][1] }}">{{ outputString[3][1] }}</div>
+                <div id="guessLetter32" class="tile" style="background-color:{{ all_outputs[3][2] }}">{{ outputString[3][2] }}</div>
+                <div id="guessLetter33" class="tile" style="background-color:{{ all_outputs[3][3] }}">{{ outputString[3][3] }}</div>
+                <div id="guessLetter34" class="tile" style="background-color:{{ all_outputs[3][4] }}">{{ outputString[3][4] }}</div>
+            </div>
+            <div id="guessRow4">
+                <div id="guessLetter40" class="tile" style="background-color:{{ all_outputs[4][0] }}">{{ outputString[4][0] }}</div>
+                <div id="guessLetter41" class="tile" style="background-color:{{ all_outputs[4][1] }}">{{ outputString[4][1] }}</div>
+                <div id="guessLetter42" class="tile" style="background-color:{{ all_outputs[4][2] }}">{{ outputString[4][2] }}</div>
+                <div id="guessLetter43" class="tile" style="background-color:{{ all_outputs[4][3] }}">{{ outputString[4][3] }}</div>
+                <div id="guessLetter44" class="tile" style="background-color:{{ all_outputs[4][4] }}">{{ outputString[4][4] }}</div>
+            </div>
+            <div id="guessRow5">
+                <div id="guessLetter50" class="tile" style="background-color:{{ all_outputs[5][0] }}">{{ outputString[5][0] }}</div>
+                <div id="guessLetter51" class="tile" style="background-color:{{ all_outputs[5][1] }}">{{ outputString[5][1] }}</div>
+                <div id="guessLetter52" class="tile" style="background-color:{{ all_outputs[5][2] }}">{{ outputString[5][2] }}</div>
+                <div id="guessLetter53" class="tile" style="background-color:{{ all_outputs[5][3] }}">{{ outputString[5][3] }}</div>
+                <div id="guessLetter54" class="tile" style="background-color:{{ all_outputs[5][4] }}">{{ outputString[5][4] }}</div>
+            </div>
+        </div>
+        <!---<div class="key-container"></div>-->
+
+
+        <div>
+            <p>{{ errorMessage }}</p>
+            {% if guesses < 6 and youWin != 1 %}
+                {{ 6 - guesses }} guesses left
+                <form action="/play" method="post">
+                    <div class="mb-3">
+                        <input class="form-control mx-auto w-auto" autofocus="autofocus" autocomplete="off" id="guess_word" name="guess_word" placeholder="Guess Word" type="text" maxlength="5" size="7">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            {% elif guesses >= 6 %}
+                The correct word was {{ correct_word_cap }}!
+                <form action="/play" method="get">
+                    <button class="btn btn-primary" type="submit">Play Again</button>
+                </form>
+            {% elif youWin == 1 %}
+                You Win!
+                <form action="/play" method="get">
+                    <button class="btn btn-primary" type="submit">Play Again</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
