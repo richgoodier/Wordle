@@ -1,4 +1,4 @@
-# COMPETITIVE WORDLE WEBSITE
+# Competitive Wordle Website
 #### Video Demo: <https://youtu.be/MBog-2T3CHs>
 ### Description:
 Welcome to my Competitive Wordle Website!
